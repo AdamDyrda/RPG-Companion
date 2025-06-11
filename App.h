@@ -10,5 +10,7 @@
 class App : public wxApp {
     public:
         bool OnInit();
+private:
+    std::vector<Player*>* players;
 };
 #endif //APP_H

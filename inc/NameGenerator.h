@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <ctime>
 class  NameGenerator {
 public:
     NameGenerator();

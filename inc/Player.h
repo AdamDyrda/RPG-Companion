@@ -97,7 +97,6 @@ public:
   Player(std::string name, std::string occupation, std::string birthplace, std::string residence, std::string pronoun, int age) {
     this->name = std::move(name);
     this->occupation = std::move(occupation);
-    this->age = age;
     this->birthplace = std::move(birthplace);
     this->residence = std::move(residence);
     this->pronoun = std::move(pronoun);
