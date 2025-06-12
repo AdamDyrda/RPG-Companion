@@ -5,10 +5,11 @@
 #include "playerFrame.h"
 
 PlayerFrame::PlayerFrame(wxString windowTitle, Player *player, wxFont mainFont):wxFrame(nullptr,wxID_ANY,windowTitle) {
-    CreateControls();
-    BindEventHandlers();
-    SetupSizers();
+  //  CreateControls();
+//    BindEventHandlers();
+    //SetupSizers();
     this->mainFont= mainFont;
+    this->player = player;
 }
 
 
@@ -114,7 +115,38 @@ void PlayerFrame::CreateControls() {
     mechanicalRepairCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     auto* medicineLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("medicine:"));
     medicineCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
-    auto*
+    auto* naturalWorldLabel = new wxStaticText(mainWindow, wxID_ANY,wxT("naturalWorld:"));
+    naturalWorldCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* navigatelabel = new wxStaticText(mainWindow, wxID_ANY, wxT("navigatelabel:"));
+    navigateCtrl= new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* ocultLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("ocult:"));
+    occultCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* persuadeLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("persuade:"));
+    persuadeCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* pilotLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("pilot:"));
+    pilotCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* psychoanalysisLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("psychoanalysis:"));
+    psychoanalysisCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* psychologyLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("psychology:"));
+    psychologyCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* rideLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("ride:"));
+    rideCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* sicenceLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("sicence:"));
+    scienceCtrl= new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* sleightOfHandLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("sleightOfHand:"));
+    sleightOfHandCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* spotHiddenLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("spotHidden:"));
+    spotHiddenCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* stealthLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("stealth:"));
+    stealthCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* survivalLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("survival:"));
+    survivalCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* swimLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("swim:"));
+    swimCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* throwingLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("throwing:"));
+    throwingCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
+    auto* trackLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("track:"));
+    trackCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
 
 
 
@@ -122,4 +154,9 @@ void PlayerFrame::CreateControls() {
 
 
 
+
+}
+
+void PlayerFrame::LoadPlayerData() {
+nameCtrl->SetValue(wxT(&player.));
 }

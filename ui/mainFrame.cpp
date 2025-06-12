@@ -389,7 +389,7 @@ void MainFrame::OnDialogAddPlayerButtonClicked(wxCommandEvent &event) {
 void MainFrame::OnInspectPlayerButtonClicked(wxCommandEvent &event) {
 if (playersListBox->GetSelection()!=wxNOT_FOUND) {
     int selection = playersListBox->GetSelection();
-    p
+
 
 }
 

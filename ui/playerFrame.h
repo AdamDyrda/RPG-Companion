@@ -15,11 +15,11 @@ public:
 
     PlayerFrame(wxString windowTitle,Player* player,wxFont mainFont);
     private:
-    std::vector<Player*>* players;
+    Player* player;
     wxFont mainFont;
     void CreateControls();
+    void LoadPlayerData();
     void BindEventHandlers();
-    void PullDataFromFile();
     void SetupSizers();
 
 
@@ -77,7 +77,7 @@ public:
     wxTextCtrl* medicineCtrl;
     wxTextCtrl* naturalWorldCtrl;
     wxTextCtrl* navigateCtrl;
-    wxTextCtrl* ocultCtrl;
+    wxTextCtrl* occultCtrl;
     wxTextCtrl* persuadeCtrl;
     wxTextCtrl* pilotCtrl;
     wxTextCtrl* psychoanalysisCtrl;

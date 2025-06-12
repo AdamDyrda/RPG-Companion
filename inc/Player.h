@@ -9,6 +9,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <wx/string.h>
 
 
 #include "../inc/Weapon.h"
@@ -171,6 +172,136 @@ public:
     std::string GetName() const {
     return name;
   }
+  std::string GetName();
+  std::string GetOccupation() const;
+  std::string GetBirthplace() const;
+  std::string GetResistance() const;
+  std::string GetPronoun() const;
+  int GetAge() const;
+
+  int GetStrength() const;
+  int GetConcentration() const;
+  int GetDexterity() const;
+  int GetIntelligence() const;
+  int GetSize() const;
+  int GetPower() const;
+  int GetAppearance() const;
+  int GetEducation() const;
+  int GetHitPoints() const;
+  int GetMagicPoints() const;
+  int GetLuckPoints() const;
+  int GetLuck() const;
+  int GetSanity() const;
+
+  int GetAccounting() const;
+  int GetAnthropology() const;
+  int GetApprise() const;
+  int GetArcheology() const;
+  int GetArt() const;
+  int GetCharm() const;
+  int GetClimb() const;
+  int GetCreditRating() const;
+  int GetCThulhuMythos() const;
+  int GetDisguise() const;
+  int GetDodge() const;
+  int GetDrive() const;
+  int GetElectricalRepair() const;
+  int GetFastTalk() const;
+  int GetFighting() const;
+  int GetFirearmsHandgun() const;
+  int GetFirearmsRifle() const;
+  int GetFirstAid() const;
+  int GetHistory() const;
+  int GetIntimidate() const;
+  int GetJump() const;
+  int GetLanguageOther()const;
+  int GetLanguageOwn()const;
+  int GetLaw() const;
+  int GetLibraryUse() const;
+  int GetListen() const;
+  int GetLocksmith() const;
+  int GetMechanicalRepair() const;
+  int GetMedicine() const;
+  int GetNaturalWorld() const;
+  int GetOccult() const;
+  int GetPersuade() const;
+  int GetPilot() const;
+  int GetPsychoanalysis() const;
+  int GetPsychology() const;
+  int GetRide() const;
+  int GetScience() const;
+  int GetSleightOfHand() const;
+  int GetSpotHidden() const;
+  int GetStealth() const;
+  int GetSurvival() const;
+  int GetSwim() const;
+  int GetThrowing() const;
+  int GetTrack() const;
+
+
+  void SetName(const wxString&);
+  void SetOccupation(const wxString&);
+  void SetBirthplace(const wxString&);
+  void SetResistance(const wxString&);
+  void SetPronoun(const wxString&);
+  void SetAge(const wxString&);
+  void SetStrength(const wxString&);
+  void SetConcentration(const wxString&);
+  void SetDexterity(const wxString&);
+  void SetIntelligence(const wxString&);
+  void SetSize(const wxString&);
+  void SetPower(const wxString&);
+  void SetAppearance(const wxString&);
+  void SetEducation(const wxString&);
+  void SetHitPoints(const wxString&);
+  void SetMagicPoints(const wxString&);
+  void SetLuckPoints(const wxString&);
+  void SetLuck(const wxString&);
+  void SetSanity(const wxString&);
+  void SetAccounting(const wxString&);
+  void SetAnthropology(const wxString&);
+  void SetApprise(const wxString&);
+  void SetArcheology(const wxString&);
+  void SetArt(const wxString&);
+  void SetClimb(const wxString&);
+  void SetCreditRating(const wxString&);
+  void SetCThulhuMythos(const wxString&);
+  void SetDisguise(const wxString&);
+  void SetDodge(const wxString&);
+  void SetDriveAuto(const wxString&);
+  void SetElectricalRepair(const wxString&);
+  void SetFastTalk(const wxString&);
+  void SetFighting(const wxString&);
+  void SetFirearmsHandgun(const wxString&);
+  void SetFirearmsRifle(const wxString&);
+  void SetFirstAid(const wxString&);
+  void SetHistory(const wxString&);
+  void SetIntimidate(const wxString&);
+  void SetJump(const wxString&);
+  void SetLanguageOther(const wxString&);
+  void SetLanguageOwn(const wxString&);
+  void SetLaw(const wxString&);
+  void SetLibraryUse(const wxString&);
+  void SetListen(const wxString&);
+  void SetLocksmith(const wxString&);
+  void SetMechanicalRepair(const wxString&);
+  void SetMedicine(const wxString&);
+  void SetNaturalWorld(const wxString&);
+  void SetOccult(const wxString&);
+  void SetPersuade(const wxString&);
+  void SetPilot(const wxString&);
+  void SetPsychoanalysis(const wxString&);
+  void SetPsychology(const wxString&);
+  void SetRide(const wxString&);
+  void SetScience(const wxString&);
+  void SetSleightOfHand(const wxString&);
+  void SetSpotHidden(const wxString&);
+  void SetStealth(const wxString&);
+  void SetSurvival(const wxString&);
+  void SetSwim(const wxString&);
+  void SetThrowing(const wxString&);
+  void SetTrack(const wxString&);
+
 };
 
 
