@@ -19,11 +19,13 @@ public:
     wxFont mainFont;
     void CreateControls();
     void LoadPlayerData();
+
+    void OnClose(wxCloseEvent &event);
+
     void BindEventHandlers();
     void SetupSizers();
 
-
-
+    wxScrolledWindow* mainWindow;
 
     wxTextCtrl* nameCtrl;
     wxTextCtrl* occupationCtrl;

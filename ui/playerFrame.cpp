@@ -5,17 +5,17 @@
 #include "playerFrame.h"
 
 PlayerFrame::PlayerFrame(wxString windowTitle, Player *player, wxFont mainFont):wxFrame(nullptr,wxID_ANY,windowTitle) {
-  //  CreateControls();
-//    BindEventHandlers();
-    //SetupSizers();
     this->mainFont= mainFont;
     this->player = player;
+  CreateControls();
+    //BindEventHandlers();
+    SetupSizers();
+    LoadPlayerData();
 }
 
 
 void PlayerFrame::CreateControls() {
-    wxBoxSizer *mainSizer = new wxBoxSizer(wxVERTICAL);
-    auto* mainWindow = new wxScrolledWindow(this, wxID_ANY);
+    mainWindow = new wxScrolledWindow(this, wxID_ANY);
     auto* nameLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Name:"));
     nameCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     auto* occupationLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Occupation:"));
@@ -156,7 +156,36 @@ void PlayerFrame::CreateControls() {
 
 
 }
+void PlayerFrame::BindEventHandlers() {
+    // Bind any necessary event handlers here
+}
+void PlayerFrame::SetupSizers() {
+    // Set up the sizers for the controls
+    wxBoxSizer *mainSizer = new wxBoxSizer(wxVERTICAL);
+    mainSizer->Add(nameCtrl, 0, wxEXPAND | wxALL, 5);
+    mainSizer->Add(occupationCtrl, 0, wxEXPAND | wxALL, 5);
+    mainSizer->Add(birthplaceCtrl, 0, wxEXPAND | wxALL, 5);
+    mainSizer->Add(residenceCtrl, 0, wxEXPAND | wxALL, 5);
+    mainSizer->Add(pronounCtrl, 0, wxEXPAND | wxALL, 5);
+    mainSizer->Add(ageCtrl, 0, wxEXPAND | wxALL, 5);
+
+    // Add other controls similarly...
+
+    mainWindow->SetSizer(mainSizer);
+    mainWindow->Layout();
+}
 
 void PlayerFrame::LoadPlayerData() {
-nameCtrl->SetValue(wxT(&player.));
+    nameCtrl->SetValue(player->GetName());
+    occupationCtrl->SetValue(player->GetOccupation());
+    birthplaceCtrl->SetValue(player->GetBirthplace());
+    residenceCtrl->SetValue(player->GetResistance());
+    pronounCtrl->SetValue(player->GetPronoun());
+    ageCtrl->SetValue(wxString::Format(wxT("%d"), player->GetAge()));
+    strengthCtrl->SetValue(wxString::Format(wxT("%d"), player->GetStrength()));
+
+}
+void PlayerFrame::OnClose(wxCloseEvent &event) {
+
+    event.Skip();
 }

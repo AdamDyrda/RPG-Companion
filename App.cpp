@@ -7,7 +7,7 @@
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
-    StorageManager *sm =new StorageManager("Players");
+    auto *sm =new StorageManager("Players");
     players = sm->LoadPlayers();
     auto *mainFrame = new MainFrame("RPG-Companion",players);
     mainFrame->SetClientSize(1440, 1024);

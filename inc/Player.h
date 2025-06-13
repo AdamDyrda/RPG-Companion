@@ -196,7 +196,7 @@ public:
   int GetAccounting() const;
   int GetAnthropology() const;
   int GetApprise() const;
-  int GetArcheology() const;
+  int GetArchaeology() const;
   int GetArt() const;
   int GetCharm() const;
   int GetClimb() const;
@@ -242,7 +242,7 @@ public:
   void SetName(const wxString&);
   void SetOccupation(const wxString&);
   void SetBirthplace(const wxString&);
-  void SetResistance(const wxString&);
+  void SetResidence(const wxString&);
   void SetPronoun(const wxString&);
   void SetAge(const wxString&);
   void SetStrength(const wxString&);

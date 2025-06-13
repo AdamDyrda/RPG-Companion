@@ -307,8 +307,8 @@ void MainFrame::SetupSizers() {
     D10D12sizer->Add(D12rectangle, 0, wxALL, 10);
     diceRollerPanelSizer->Add(D10D12sizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 10);
     auto D20D100sizer = new wxBoxSizer(wxHORIZONTAL);
-    D20D100sizer->Add(D20rectangle,0,  wxALL, 10);
-    D20D100sizer->Add(D100rectangle, 0 | wxALL, 10);
+    D20D100sizer->Add(D20rectangle,0,  wxLEFT|wxRIGHT, 10);
+    D20D100sizer->Add(D100rectangle, 0 , wxLEFT|wxRIGHT, 10);
     diceRollerPanelSizer->AddSpacer(20);
     diceRollerPanelSizer->Add(D20D100sizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 10);
     diceRollerPanelSizer->AddStretchSpacer(1);
@@ -389,7 +389,9 @@ void MainFrame::OnDialogAddPlayerButtonClicked(wxCommandEvent &event) {
 void MainFrame::OnInspectPlayerButtonClicked(wxCommandEvent &event) {
 if (playersListBox->GetSelection()!=wxNOT_FOUND) {
     int selection = playersListBox->GetSelection();
-
+    Player* player = players->at(selection);
+    auto* playerFrame = new PlayerFrame(player->GetName(), player, this->GetFont());
+    playerFrame->Show(true);
 
 }
 

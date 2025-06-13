@@ -15,6 +15,7 @@ class StorageManager {
         std::vector<Player*>* LoadPlayers();
     private:
         std::vector<Player*> players;
+        std::string filePath;
 
 
 };

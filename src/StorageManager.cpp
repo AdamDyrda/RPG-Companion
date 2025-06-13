@@ -7,7 +7,7 @@
 #include <format>
 
 StorageManager::StorageManager(std::string filePath) {
-
+this->filePath = std::move(filePath);
 }
 
 std::vector<Player *>* StorageManager::LoadPlayers() {
