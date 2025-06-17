@@ -1,6 +1,3 @@
-//
-// Created by adame on 6/10/2025.
-//
 
 #ifndef PLAYERFRAME_H
 #define PLAYERFRAME_H
@@ -13,10 +10,11 @@
 class PlayerFrame : public wxFrame{
 public:
 
-    PlayerFrame(wxString windowTitle,Player* player,wxFont mainFont);
+    PlayerFrame(const wxString &windowTitle,Player* player,const wxFont &mainFont, const wxFont &headlineFont);
     private:
     Player* player;
     wxFont mainFont;
+        wxFont headlineFont;
     void CreateControls();
     void LoadPlayerData();
 
@@ -93,6 +91,74 @@ public:
     wxTextCtrl* swimCtrl;
     wxTextCtrl* throwingCtrl;
     wxTextCtrl* trackCtrl;
+        wxBoxSizer* nameSizer;
+    wxBoxSizer* occupationSizer;
+        wxBoxSizer* birthplaceSizer;
+    wxBoxSizer* residenceSizer;
+        wxBoxSizer* pronounSizer;
+        wxBoxSizer* ageSizer;
+        wxBoxSizer* strengthSizer;
+    wxBoxSizer* concentrationSizer;
+        wxBoxSizer* dexteritySizer;
+    wxBoxSizer* inteligenceSizer;
+        wxBoxSizer* sizeSizer;
+    wxBoxSizer* powerSizer;
+        wxBoxSizer* appearanceSizer;
+    wxBoxSizer* educationSizer;
+        wxBoxSizer* hitPointsSizer;
+    wxBoxSizer* magicPointsSizer;
+        wxBoxSizer* luckPointsSizer;
+    wxBoxSizer* luckSizer;
+        wxBoxSizer* sanitySizer;
+    wxBoxSizer* accountingSizer;
+        wxBoxSizer* anthropologySizer;
+    wxBoxSizer* appraiseSizer;
+        wxBoxSizer* archaeologySizer;
+    wxBoxSizer* artSizer;
+        wxBoxSizer* charmSizer;
+        wxBoxSizer* climbSizer;
+        wxBoxSizer* creditRatingSizer;
+        wxBoxSizer* chtulhuMythosSizer;
+    wxBoxSizer* disguiseSizer;
+        wxBoxSizer* dodgeSizer;
+    wxBoxSizer* driveAutoSizer;
+        wxBoxSizer* electricalRepairSizer;
+        wxBoxSizer* fastTalkSizer;
+    wxBoxSizer* fightingSizer;
+        wxBoxSizer* firearmsHandgunSizer;
+    wxBoxSizer* firearmsRifleSizer;
+        wxBoxSizer* firstAidSizer;
+    wxBoxSizer* historySizer;
+        wxBoxSizer* intimidateSizer;
+    wxBoxSizer* jumpSizer;
+        wxBoxSizer* languageOtherSizer;
+    wxBoxSizer* languageOwnSizer;
+        wxBoxSizer* lawSizer;
+    wxBoxSizer* libraryUseSizer;
+        wxBoxSizer* listenSizer;
+    wxBoxSizer* locksmithSizer;
+        wxBoxSizer* mechanicalRepairSizer;
+    wxBoxSizer* medicineSizer;
+        wxBoxSizer* naturalWorldSizer;
+        wxBoxSizer* occultSizer;
+        wxBoxSizer* persuadeSizer;
+    wxBoxSizer* pilotSizer;
+        wxBoxSizer* psychoanalysisSizer;
+    wxBoxSizer* psychologySizer;
+        wxBoxSizer* rideSizer;
+    wxBoxSizer* scienceSizer;
+        wxBoxSizer* sleightOfHandSizer;
+    wxBoxSizer* spotHiddenSizer;
+        wxBoxSizer* stealthSizer;
+    wxBoxSizer* survivalSizer;
+        wxBoxSizer* swimSizer;
+    wxBoxSizer* throwingSizer;
+        wxBoxSizer* trackSizer;
+        wxBoxSizer* navigateSizer;
+
+        wxBoxSizer* mainSizer;
+
+
 
 
 };

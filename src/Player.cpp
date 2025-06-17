@@ -1,6 +1,3 @@
-//
-// Created by adame on 3/16/2025.
-//
 
 #include "../inc/Player.h"
 #include <string>
@@ -92,7 +89,7 @@ int Player::GetClimb() const {
 int Player::GetCreditRating() const {
     return skills.creditRating;
 }
-int Player::GetCThulhuMythos() const {
+int Player::GetCtulhuMythos() const {
     return skills.cthulhuMythos;
 }
 int Player::GetDisguise() const {
@@ -101,7 +98,7 @@ int Player::GetDisguise() const {
 int Player::GetDodge() const {
     return skills.dodge;
 }
-int Player::GetDrive() const {
+int Player::GetDriveAuto() const {
     return skills.driveAuto;
 }
 int Player::GetElectricalRepair() const {
@@ -200,6 +197,11 @@ int Player::GetThrowing() const {
 int Player::GetTrack() const {
     return skills.track;
 }
+
+int Player::GetNavigate() const {
+    return skills.navigate;
+}
+
 void Player::SetName(const wxString& name) {
     this->name = name.ToStdString();
 }
@@ -669,6 +671,24 @@ void Player::SetTrack(const wxString& track) {
     }
     else {
         wxLogError("Track must be a number.");
+    }
+}
+
+void Player::SetCharm(const wxString &charm) {
+    if (charm.IsNumber()) {
+        skills.charm = std::stoi(charm.ToStdString());
+    }
+    else {
+        wxLogError("Charm must be a number.");
+    }
+}
+
+void Player::SetNavigate(const wxString &navigate) {
+    if (navigate.IsNumber()) {
+        skills.navigate = std::stoi(navigate.ToStdString());
+    }
+    else {
+        wxLogError("Navigate must be a number.");
     }
 }
 

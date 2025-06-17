@@ -201,10 +201,10 @@ public:
   int GetCharm() const;
   int GetClimb() const;
   int GetCreditRating() const;
-  int GetCThulhuMythos() const;
+  int GetCtulhuMythos() const;
   int GetDisguise() const;
   int GetDodge() const;
-  int GetDrive() const;
+  int GetDriveAuto() const;
   int GetElectricalRepair() const;
   int GetFastTalk() const;
   int GetFighting() const;
@@ -237,7 +237,7 @@ public:
   int GetSwim() const;
   int GetThrowing() const;
   int GetTrack() const;
-
+  int GetNavigate() const;
 
   void SetName(const wxString&);
   void SetOccupation(const wxString&);
@@ -301,7 +301,8 @@ public:
   void SetSwim(const wxString&);
   void SetThrowing(const wxString&);
   void SetTrack(const wxString&);
-
+    void SetCharm(const wxString&);
+    void SetNavigate(const wxString&);
 };
 
 

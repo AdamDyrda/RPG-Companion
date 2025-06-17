@@ -30,10 +30,11 @@ bool MainFrame::LoadCustomFont() {
 
 void MainFrame::CreateControls() {
   if (!LoadCustomFont()) {
+      auto* statusBar = new wxStatusBar(this);
         wxLogStatus("Failed to load custom font, using default font.");
     }
-    auto const HeadlineFont = wxFont(wxFontInfo(wxSize(0,64)).Bold().FaceName("Almendra SC"));
-    auto const MainFont = wxFont(wxFontInfo(wxSize(0,24)).FaceName("Almendra SC"));
+    headlineFont = wxFont(wxFontInfo(wxSize(0,64)).Bold().FaceName("Almendra SC"));
+    mainFont = wxFont(wxFontInfo(wxSize(0,24)).FaceName("Almendra SC"));
     auto const BACKGROUND_COLOR = wxColour(143, 185, 150);
     auto const BUTTON_COLOR = wxColour(236,210,187);
     auto const TEXT_COLOR = wxColour(17, 29, 19);
@@ -55,12 +56,12 @@ void MainFrame::CreateControls() {
 
     //PLAYER PANEL
     playersPanel = new wxPanel(this, wxID_ANY, wxDefaultPosition);
-    playersPanel->SetFont(MainFont);
+    playersPanel->SetFont(mainFont);
     playersPanel->SetBackgroundColour(BACKGROUND_COLOR);
     playersPanel->SetForegroundColour(TEXT_COLOR);
     //controls
     playersHeadlineText = new wxStaticText(playersPanel, wxID_ANY, "Players");
-    playersHeadlineText->SetFont(HeadlineFont);
+    playersHeadlineText->SetFont(headlineFont);
 
     playersListBox = new wxListBox(playersPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize);
     playersListBox->SetBackgroundColour(BUTTON_COLOR);
@@ -72,18 +73,18 @@ void MainFrame::CreateControls() {
 
    //DICEROLLER PANEL
     diceRollerPanel = new wxPanel(this);
-    diceRollerPanel->SetFont(MainFont);
+    diceRollerPanel->SetFont(mainFont);
     diceRollerPanel->SetBackgroundColour(BACKGROUND_COLOR);
     diceRollerPanel->SetForegroundColour(TEXT_COLOR);
 
     //controls
     diceRollerHeadlineText = new wxStaticText(diceRollerPanel, wxID_ANY, "Dice Roller");
-    diceRollerHeadlineText->SetFont(HeadlineFont);
+    diceRollerHeadlineText->SetFont(headlineFont);
 
     D4rectangle = new wxStaticBox(diceRollerPanel, wxID_ANY, "D4",wxDefaultPosition,wxSize(200,200));
     auto* D4sizer = new wxBoxSizer(wxVERTICAL);
     D4result = new wxStaticText(D4rectangle, wxID_ANY, "",wxDefaultPosition,wxSize(130,wxDefaultCoord));
-    D4result->SetFont(HeadlineFont);
+    D4result->SetFont(headlineFont);
     D4RollButton = new wxButton(D4rectangle, wxID_ANY, "Roll");
     D4RollButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -97,7 +98,7 @@ void MainFrame::CreateControls() {
     D6rectangle = new wxStaticBox(diceRollerPanel, wxID_ANY, "D6",wxDefaultPosition,wxSize(200,200));
     auto* D6sizer = new wxBoxSizer(wxVERTICAL);
     D6result = new wxStaticText(D6rectangle, wxID_ANY, "",wxDefaultPosition,wxSize(130,wxDefaultCoord));
-    D6result->SetFont(HeadlineFont);
+    D6result->SetFont(headlineFont);
     D6RollButton = new wxButton(D6rectangle, wxID_ANY, "Roll");
     D6RollButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -110,7 +111,7 @@ void MainFrame::CreateControls() {
     D10rectangle = new wxStaticBox(diceRollerPanel, wxID_ANY, "D10",wxDefaultPosition,wxSize(200,200));
     auto* D10sizer = new wxBoxSizer(wxVERTICAL);
     D10result = new wxStaticText(D10rectangle, wxID_ANY, "",wxDefaultPosition,wxSize(130,wxDefaultCoord));
-    D10result->SetFont(HeadlineFont);
+    D10result->SetFont(headlineFont);
     D10RollButton = new wxButton(D10rectangle, wxID_ANY, "Roll");
     D10RollButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -124,7 +125,7 @@ void MainFrame::CreateControls() {
     auto* D12sizer = new wxBoxSizer(wxVERTICAL);
   D12result = new
           wxStaticText(D12rectangle, wxID_ANY, "", wxDefaultPosition, wxSize(130, wxDefaultCoord));
-  D12result->SetFont(HeadlineFont);
+  D12result->SetFont(headlineFont);
     D12RollButton = new wxButton(D12rectangle, wxID_ANY, "Roll");
     D12RollButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -137,7 +138,7 @@ void MainFrame::CreateControls() {
     D20rectangle = new wxStaticBox(diceRollerPanel, wxID_ANY, "D20",wxDefaultPosition,wxSize(200,200));
     auto* D20sizer = new wxBoxSizer(wxVERTICAL);
   D20result = new wxStaticText(D20rectangle, wxID_ANY, "", wxDefaultPosition, wxSize(130, wxDefaultCoord));
-  D20result->SetFont(HeadlineFont);
+  D20result->SetFont(headlineFont);
     D20RollButton = new wxButton(D20rectangle, wxID_ANY, "Roll");
     D20RollButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -150,7 +151,7 @@ void MainFrame::CreateControls() {
     D100rectangle = new wxStaticBox(diceRollerPanel, wxID_ANY, "D100",wxDefaultPosition,wxSize(200,200));
     auto* D100sizer = new wxBoxSizer(wxVERTICAL);
     D100result = new wxStaticText(D100rectangle, wxID_ANY, "", wxDefaultPosition,wxSize(130, wxDefaultCoord));
-    D100result->SetFont(HeadlineFont);
+    D100result->SetFont(headlineFont);
     D100RollButton = new wxButton(D100rectangle, wxID_ANY, "Roll");
     D100RollButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -167,7 +168,7 @@ void MainFrame::CreateControls() {
     addPlayerDialog = new wxDialog(this, wxID_ANY, "Add Player");
     addPlayerDialog->SetBackgroundColour(BACKGROUND_COLOR);
     addPlayerDialog->SetForegroundColour(TEXT_COLOR);
-    addPlayerDialog->SetFont(MainFont);
+    addPlayerDialog->SetFont(mainFont);
     auto* addPlayerDialogSizer = new wxBoxSizer(wxVERTICAL);
     auto* nameLabel = new wxStaticText(addPlayerDialog, wxID_ANY, "Name:");
     nameTextCtrl = new wxTextCtrl(addPlayerDialog, wxID_ANY, "", wxDefaultPosition, wxDefaultSize);
@@ -206,19 +207,19 @@ void MainFrame::CreateControls() {
     generatePlayerNamesDialog = new wxDialog(this, wxID_ANY, "Generate Player Names");
     generatePlayerNamesDialog->SetBackgroundColour(BACKGROUND_COLOR);
     generatePlayerNamesDialog->SetForegroundColour(TEXT_COLOR);
-    generatePlayerNamesDialog->SetFont(MainFont);
+    generatePlayerNamesDialog->SetFont(mainFont);
     auto* generatePlayerNamesDialogSizer = new wxBoxSizer(wxVERTICAL);
     auto* namesGeneratorHeadlineText = new wxStaticText(generatePlayerNamesDialog, wxID_ANY, "Generate Player Names");
     nameList = new wxListBox(generatePlayerNamesDialog, wxID_ANY, wxDefaultPosition, wxDefaultSize);
     nameList->SetBackgroundColour(BUTTON_COLOR);
     nameList->SetMinSize(wxSize(wxDefaultCoord, 200));
-    nameList->SetFont(MainFont);
+    nameList->SetFont(mainFont);
     wxString const genderChoices[] = {"female","male"};
     radioButtons = new wxRadioBox(generatePlayerNamesDialog, wxID_ANY, "Select Gender", wxDefaultPosition,
                                 wxSize(wxDefaultSize), 2, genderChoices);
     generateNamesButton = new wxButton(generatePlayerNamesDialog, wxID_ANY, "Generate Names");
     doneButton = new wxButton(generatePlayerNamesDialog, wxID_ANY, "Done");
-    namesGeneratorHeadlineText->SetFont(HeadlineFont);
+    namesGeneratorHeadlineText->SetFont(headlineFont);
     generateNamesButton->SetBackgroundColour(BUTTON_COLOR);
     doneButton->SetBackgroundColour(BUTTON_COLOR);
 
@@ -390,7 +391,7 @@ void MainFrame::OnInspectPlayerButtonClicked(wxCommandEvent &event) {
 if (playersListBox->GetSelection()!=wxNOT_FOUND) {
     int selection = playersListBox->GetSelection();
     Player* player = players->at(selection);
-    auto* playerFrame = new PlayerFrame(player->GetName(), player, this->GetFont());
+    auto* playerFrame = new PlayerFrame(player->GetName(), player, mainFont, headlineFont);
     playerFrame->Show(true);
 
 }

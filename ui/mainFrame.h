@@ -43,6 +43,8 @@ class MainFrame : public wxFrame {
 
 
     wxMenuBar* menuBar;
+        wxFont mainFont;
+        wxFont headlineFont;
         wxPanel* playersPanel;
         wxPanel* diceRollerPanel;
         wxListBox* playersListBox;
