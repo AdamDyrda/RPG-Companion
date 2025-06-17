@@ -10,10 +10,13 @@
 
 MainFrame::MainFrame(const wxString &title, std::vector<Player*>* players ) : wxFrame(nullptr, wxID_ANY, title) {
     this->players = players;
+    auto* testPlayer = new Player("John Doe", "Adventurer", "Unknown", "Unknown", "He/Him", 30);
+    players->push_back(testPlayer);
     CreateControls();
     SetupSizers();
     BindEventHandlers();
-    //
+    loadPlayers();
+
 }
 
 bool MainFrame::LoadCustomFont() {
@@ -280,9 +283,13 @@ void MainFrame::BindEventHandlers() {
     this->D100RollButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnD100ButtonClicked(event);});
 }
 
-void MainFrame::PullDataFromFile() {
-//TODO: Implement data loading from file
+void MainFrame::loadPlayers() {
+    for (auto& player : *players) {
+        playersListBox->Append(player->GetName());
+    }
 }
+
+
 
 
 void MainFrame::SetupSizers() {

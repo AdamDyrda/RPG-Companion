@@ -20,7 +20,7 @@ class MainFrame : public wxFrame {
 
         void CreateControls();
         void BindEventHandlers();
-        void PullDataFromFile();
+        void loadPlayers();
         void SetupSizers();
         bool LoadCustomFont();
 

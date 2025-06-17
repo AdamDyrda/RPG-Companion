@@ -21,37 +21,45 @@ void PlayerFrame::CreateControls() {
     mainWindow->SetBackgroundColour(wxColour(143, 185, 150));
     mainWindow->SetForegroundColour(wxColour(17, 29, 19));
     mainWindow->SetScrollRate(wxDefaultCoord, 50);
+    mainWindow->Center();
 
+    //name
     auto* nameLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Name:"));
     nameCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     nameSizer = new wxBoxSizer(wxHORIZONTAL);
     nameSizer->Add(nameLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     nameSizer->Add(nameCtrl, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    //occupation
     auto* occupationLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Occupation:"));
     occupationCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     occupationSizer = new wxBoxSizer(wxHORIZONTAL);
     occupationSizer->Add(occupationLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     occupationSizer->Add(occupationCtrl, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    //birthplace
     auto* birthplaceLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Birthplace:"));
     birthplaceCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     birthplaceSizer = new wxBoxSizer(wxHORIZONTAL);
     birthplaceSizer->Add(birthplaceLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     birthplaceSizer->Add(birthplaceCtrl, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    //residence
     auto* residenceLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Residence:"));
     residenceCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     residenceSizer = new wxBoxSizer(wxHORIZONTAL);
     residenceSizer->Add(residenceLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     residenceSizer->Add(residenceCtrl, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    //pronoun
     auto* pronounLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Pronoun:"));
     pronounCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     pronounSizer = new wxBoxSizer(wxHORIZONTAL);
     pronounSizer->Add(pronounLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     pronounSizer->Add(pronounCtrl, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    //age
     auto* ageLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Age:"));
     ageCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     ageSizer = new wxBoxSizer(wxHORIZONTAL);
     ageSizer->Add(ageLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     ageSizer->Add(ageCtrl, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    //strength
     auto* strengthLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Strength:"));
     strengthCtrl = new wxTextCtrl(mainWindow, wxID_ANY);
     strengthSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -365,6 +373,9 @@ void PlayerFrame::SetupSizers() {
     mainSizer->Add(residenceSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(pronounSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(ageSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
+    auto* characteristicsLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Characteristics"));
+    characteristicsLabel->SetFont(headlineFont);
+    mainSizer->Add(characteristicsLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(strengthSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(concentrationSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(dexteritySizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
@@ -378,6 +389,9 @@ void PlayerFrame::SetupSizers() {
     mainSizer->Add(luckPointsSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(luckSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(sanitySizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
+    auto* skillsLabel = new wxStaticText(mainWindow, wxID_ANY, wxT("Skills"));
+    skillsLabel->SetFont(headlineFont);
+    mainSizer->Add(skillsLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(accountingSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(anthropologySizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
     mainSizer->Add(appraiseSizer, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
@@ -426,8 +440,9 @@ void PlayerFrame::SetupSizers() {
 
 
 
-    mainWindow->SetSizerAndFit(mainSizer);
+    mainWindow->SetSizer(mainSizer);
     mainWindow->Layout();
+    mainWindow->SetSize(wxSize(wxDefaultCoord, 900));
 }
 
 void PlayerFrame::LoadPlayerData() {
