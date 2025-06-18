@@ -3,20 +3,27 @@
 //
 
 #include "playerFrame.h"
+#include <wx/display.h>
 
 PlayerFrame::PlayerFrame(const wxString &windowTitle, Player *player,const wxFont &mainFont, const wxFont &headlineFont):wxFrame(nullptr,wxID_ANY,windowTitle) {
     this->mainFont= mainFont;
     this->headlineFont = headlineFont;
     this->player = player;
   CreateControls();
-    //BindEventHandlers();
+    BindEventHandlers();
     SetupSizers();
     LoadPlayerData();
+    wxDisplay *display = new wxDisplay(this);
+
+    this->SetSize(wxSize(650,display->GetClientArea().GetHeight()));
+    this->Center();
+
 }
 
 
 void PlayerFrame::CreateControls() {
     mainWindow = new wxScrolledWindow(this, wxID_ANY);
+    mainWindow->SetSize(wxSize(800,600));
         mainWindow->SetFont(mainFont);
     mainWindow->SetBackgroundColour(wxColour(143, 185, 150));
     mainWindow->SetForegroundColour(wxColour(17, 29, 19));
@@ -360,7 +367,7 @@ void PlayerFrame::CreateControls() {
 
 }
 void PlayerFrame::BindEventHandlers() {
-    // Bind any necessary event handlers here
+    Connect(wxEVT_CLOSE_WINDOW,wxCloseEventHandler(OnClose),nullptr,this);
 }
 void PlayerFrame::SetupSizers() {
     mainSizer = new wxBoxSizer(wxVERTICAL);
@@ -445,6 +452,7 @@ void PlayerFrame::SetupSizers() {
     mainWindow->SetSize(wxSize(wxDefaultCoord, 900));
 }
 
+
 void PlayerFrame::LoadPlayerData() {
     nameCtrl->SetValue(player->GetName());
     occupationCtrl->SetValue(player->GetOccupation());
@@ -511,7 +519,76 @@ void PlayerFrame::LoadPlayerData() {
     throwingCtrl->SetValue(wxString::Format(wxT("%d"), player->GetThrowing()));
     trackCtrl->SetValue(wxString::Format(wxT("%d"), player->GetTrack()));
 }
-void PlayerFrame::OnClose(wxCloseEvent &event) {
 
+void PlayerFrame::UpdatePlayer() {
+    player->SetName(nameCtrl->GetValue());
+    player->SetOccupation(occupationCtrl->GetValue());
+    player->SetBirthplace(birthplaceCtrl->GetValue());
+    player->SetResidence(residenceCtrl->GetValue());
+    player->SetPronoun(pronounCtrl->GetValue());
+    player->SetAge(ageCtrl->GetValue());
+    player->SetStrength(strengthCtrl->GetValue());
+    player->SetConcentration(concentrationCtrl->GetValue());
+    player->SetDexterity(dexterityCtrl->GetValue());
+    player->SetIntelligence(inteligenceCtrl->GetValue());
+    player->SetSize(sizeCtrl->GetValue());
+    player->SetPower(powerCtrl->GetValue());
+    player->SetAppearance(appearanceCtrl->GetValue());
+    player->SetEducation(educationCtrl->GetValue());
+    player->SetHitPoints(hitPointsCtrl->GetValue());
+    player->SetMagicPoints(magicPointsCtrl->GetValue());
+    player->SetLuckPoints(luckPointsCtrl->GetValue());
+    player->SetLuck(luckCtrl->GetValue());
+    player->SetSanity(sanityCtrl->GetValue());
+    player->SetAccounting(accountingCtrl->GetValue());
+    player->SetAnthropology(anthropologyCtrl->GetValue());
+    player->SetApprise(appraiseCtrl->GetValue());
+    player->SetArcheology(archaeologyCtrl->GetValue());
+    player->SetArt(artCtrl->GetValue());
+    player->SetClimb(climbCtrl->GetValue());
+    player->SetCreditRating(creditRatingCtrl->GetValue());
+    player->SetCThulhuMythos(chtulhuMythosCtrl->GetValue());
+    player->SetDisguise(disguiseCtrl->GetValue());
+    player->SetDodge(dodgeCtrl->GetValue());
+    player->SetDriveAuto(driveAutoCtrl->GetValue());
+    player->SetElectricalRepair(electricalRepairCtrl->GetValue());
+    player->SetFastTalk(fastTalkCtrl->GetValue());
+    player->SetFighting(fightingCtrl->GetValue());
+    player->SetFirearmsHandgun(firearmsHandgunCtrl->GetValue());
+    player->SetFirearmsRifle(firearmsRifleCtrl->GetValue());
+    player->SetFirstAid(firstAidCtrl->GetValue());
+    player->SetHistory(historyCtrl->GetValue());
+    player->SetIntimidate(intimidateCtrl->GetValue());
+    player->SetJump(jumpCtrl->GetValue());
+    player->SetLanguageOther(languageOtherCtrl->GetValue());
+    player->SetLanguageOwn(languageOwnCtrl->GetValue());
+    player->SetLaw(lawCtrl->GetValue());
+    player->SetLibraryUse(libraryUseCtrl->GetValue());
+    player->SetListen(listenCtrl->GetValue());
+    player->SetLocksmith(locksmithCtrl->GetValue());
+    player->SetMechanicalRepair(mechanicalRepairCtrl->GetValue());
+    player->SetMedicine(medicineCtrl->GetValue());
+    player->SetNaturalWorld(naturalWorldCtrl->GetValue());
+    player->SetOccult(occultCtrl->GetValue());
+    player->SetPersuade(persuadeCtrl->GetValue());
+    player->SetPilot(pilotCtrl->GetValue());
+    player->SetPsychoanalysis(pilotCtrl->GetValue());
+    player->SetPsychology(psychologyCtrl->GetValue());
+    player->SetRide(rideCtrl->GetValue());
+    player->SetScience(scienceCtrl->GetValue());
+    player->SetSleightOfHand(sleightOfHandCtrl->GetValue());
+    player->SetSpotHidden(spotHiddenCtrl->GetValue());
+    player->SetStealth(stealthCtrl->GetValue());
+    player->SetSurvival(survivalCtrl->GetValue());
+    player->SetSwim(swimCtrl->GetValue());
+    player->SetThrowing(throwingCtrl->GetValue());
+    player->SetTrack(trackCtrl->GetValue());
+    player->SetCharm(charmCtrl->GetValue());
+    player->SetNavigate(navigateCtrl->GetValue());
+    std::cout<<"Player update Triggered";
+}
+
+void PlayerFrame::OnClose(wxCloseEvent &event) {
+    UpdatePlayer();
     event.Skip();
 }

@@ -3,6 +3,7 @@
 #include <wx/filename.h>
 #include <string>
 #include <wx/tokenzr.h>
+#include <wx/display.h>
 
 #include "../inc/dice.h"
 #include "../inc/NameGenerator.h"
@@ -16,6 +17,9 @@ MainFrame::MainFrame(const wxString &title, std::vector<Player*>* players ) : wx
     SetupSizers();
     BindEventHandlers();
     loadPlayers();
+    wxDisplay display;
+    wxSize displaySize = display.GetClientArea().GetSize();
+    SetSize(displaySize.x, displaySize.y);
 
 }
 
@@ -337,7 +341,7 @@ void MainFrame::SetupSizers() {
 
 
 void MainFrame::OnQuit(wxCloseEvent &event) {
-    //twoje rzeczy
+
     event.Skip();
 }
 
@@ -395,13 +399,8 @@ void MainFrame::OnDialogAddPlayerButtonClicked(wxCommandEvent &event) {
 
 
 void MainFrame::OnInspectPlayerButtonClicked(wxCommandEvent &event) {
-if (playersListBox->GetSelection()!=wxNOT_FOUND) {
-    int selection = playersListBox->GetSelection();
-    Player* player = players->at(selection);
-    auto* playerFrame = new PlayerFrame(player->GetName(), player, mainFont, headlineFont);
-    playerFrame->Show(true);
-
-}
+    InspectPlayer();
+    event.Skip();
 
 }
 
@@ -453,5 +452,10 @@ void MainFrame::AddPlayer() {
     }
     };
 void MainFrame::InspectPlayer() {
-
+    if (playersListBox->GetSelection()!=wxNOT_FOUND) {
+        int selection = playersListBox->GetSelection();
+        Player* player = players->at(selection);
+        auto* playerFrame = new PlayerFrame(player->GetName(), player, mainFont, headlineFont);
+        playerFrame->Show(true);
+    };
 }

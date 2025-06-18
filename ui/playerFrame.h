@@ -17,6 +17,7 @@ public:
         wxFont headlineFont;
     void CreateControls();
     void LoadPlayerData();
+    void UpdatePlayer();
 
     void OnClose(wxCloseEvent &event);
 

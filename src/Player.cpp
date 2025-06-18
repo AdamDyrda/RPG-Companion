@@ -1,4 +1,3 @@
-
 #include "../inc/Player.h"
 #include <string>
 #include <wx/wx.h>
