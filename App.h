@@ -10,6 +10,7 @@
 class App : public wxApp {
     public:
         bool OnInit();
+        int OnExit() override;
 private:
     std::vector<Player*>* players;
 };

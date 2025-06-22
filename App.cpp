@@ -1,17 +1,29 @@
 #include "ui/mainFrame.h"
 #include "App.h"
-#include <wx/wx.h>
-
 #include "inc/StorageManager.h"
+
+#include <wx/wx.h>
+#include <filesystem>
 
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
-    auto *sm =new StorageManager("Players");
+    std::string filePath = std::filesystem::current_path().string()+"./Players.json";
+    auto *sm =new StorageManager(filePath);
     players = sm->LoadPlayers();
     auto *mainFrame = new MainFrame("RPG-Companion",players);
     mainFrame->Center();
     mainFrame->Show(true);
     return true;
+}
+
+int App::OnExit() {
+    std::string filePath = std::filesystem::current_path().string()+"./Players.json";
+    auto *sm = new StorageManager(filePath);
+    nlohmann::json j;
+    sm->SavePlayersToFile(j, *players);
+    //delete sm;
+    wxApp::OnExit();
+    return 0;
 }
 
