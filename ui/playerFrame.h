@@ -92,6 +92,7 @@ public:
     wxTextCtrl* swimCtrl;
     wxTextCtrl* throwingCtrl;
     wxTextCtrl* trackCtrl;
+        wxButton* deletePlayerButton;
         wxBoxSizer* nameSizer;
     wxBoxSizer* occupationSizer;
         wxBoxSizer* birthplaceSizer;

@@ -11,8 +11,6 @@
 
 MainFrame::MainFrame(const wxString &title, std::vector<Player*>* players ) : wxFrame(nullptr, wxID_ANY, title) {
     this->players = players;
-    auto* testPlayer = new Player("John Doe", "Adventurer", "Unknown", "Unknown", "He/Him", 30);
-    players->push_back(testPlayer);
     CreateControls();
     SetupSizers();
     BindEventHandlers();
@@ -440,7 +438,7 @@ void MainFrame::AddPlayer() {
             residenceTextCtrl->GetValue().ToStdString(),
             pronounTextCtrl->GetValue().ToStdString(),
             std::stoi(ageTextCtrl->GetValue().ToStdString()));
-        players->push_back(player);
+        players->emplace_back(player);
 
         playersListBox->Append(player->GetName());
         nameTextCtrl->SetValue("");

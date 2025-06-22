@@ -76,6 +76,8 @@ void StorageManager::SavePlayersToFile(nlohmann::json& j,const std::vector<Playe
         playerJson["throwing"] = player->GetThrowing();
         playerJson["track"] = player->GetTrack();
         j["players"].push_back(playerJson);
+        delete player;
+        std::cout<<"player deleted"<<std::endl;
     }
     std::ofstream file(filePath);
     if (file.is_open()) {
@@ -109,68 +111,73 @@ std::vector<Player *>* StorageManager::LoadPlayers() {
                 playerJson["pronoun"].get<std::string>(),
                 playerJson["age"].get<int>()
             );
-            player->SetStrength(playerJson["strength"].get<std::string>());
-            player->SetConcentration(playerJson["concentration"].get<std::string>());
-            player->SetDexterity(playerJson["dexterity"].get<std::string>());
-            player->SetIntelligence(playerJson["std::stringelligence"].get<std::string>());
-            player->SetSize(playerJson["size"].get<std::string>());
-            player->SetPower(playerJson["power"].get<std::string>());
-            player->SetAppearance(playerJson["appearance"].get<std::string>());
-            player->SetEducation(playerJson["education"].get<std::string>());
-            player->SetHitPoints(playerJson["hitPostd::strings"].get<std::string>());
-            player->SetMagicPoints(playerJson["magicPostd::strings"].get<std::string>());
-            player->SetLuckPoints(playerJson["luckPostd::strings"].get<std::string>());
-            player->SetLuck(playerJson["luck"].get<std::string>());
-            player->SetSanity(playerJson["sanity"].get<std::string>());
-            player->SetAccounting(playerJson["accounting"].get<std::string>());
-            player->SetAnthropology(playerJson["anthropology"].get<std::string>());
-            player->SetApprise(playerJson["apprise"].get<std::string>());
-            player->SetArcheology(playerJson["archaeology"].get<std::string>());
-            player->SetArt(playerJson["art"].get<std::string>());
-            player->SetCharm(playerJson["charm"].get<std::string>());
-            player->SetClimb(playerJson["climb"].get<std::string>());
-            player->SetCreditRating(playerJson["creditRating"].get<std::string>());
-            player->SetCThulhuMythos(playerJson["cthulhuMythos"].get<std::string>());
-            player->SetDisguise(playerJson["disguise"].get<std::string>());
-            player->SetDodge(playerJson["dodge"].get<std::string>());
-            player->SetDriveAuto(playerJson["driveAuto"].get<std::string>());
-            player->SetElectricalRepair(playerJson["electricalRepair"].get<std::string>());
-            player->SetFastTalk(playerJson["fastTalk"].get<std::string>());
-            player->SetFighting(playerJson["fighting"].get<std::string>());
-            player->SetFirearmsHandgun(playerJson["firearmsHandgun"].get<std::string>());
-            player->SetFirearmsRifle(playerJson["firearmsRifle"].get<std::string>());
-            player->SetFirstAid(playerJson["firstAid"].get<std::string>());
-            player->SetHistory(playerJson["history"].get<std::string>());
-            player->SetIntimidate(playerJson["std::stringimidate"].get<std::string>());
-            player->SetJump(playerJson["jump"].get<std::string>());
-            player->SetLanguageOther(playerJson["languageOther"].get<std::string>());
-            player->SetLanguageOwn(playerJson["languageOwn"].get<std::string>());
-            player->SetLaw(playerJson["law"].get<std::string>());
-            player->SetLibraryUse(playerJson["libraryUse"].get<std::string>());
-            player->SetListen(playerJson["listen"].get<std::string>());
-            player->SetLocksmith(playerJson["locksmith"].get<std::string>());
-            player->SetMechanicalRepair(playerJson["mechanicalRepair"].get<std::string>());
-            player->SetMedicine(playerJson["medicine"].get<std::string>());
-            player->SetNaturalWorld(playerJson["naturalWorld"].get<std::string>());
-            player->SetOccult(playerJson["occult"].get<std::string>());
-            player->SetNavigate(playerJson["navigate"].get<std::string>());
-            player->SetPersuade(playerJson["persuade"].get<std::string>());
-            player->SetPilot(playerJson["pilot"].get<std::string>());
-            player->SetPsychoanalysis(playerJson["psychoanalysis"].get<std::string>());
-            player->SetPsychology(playerJson["psychology"].get<std::string>());
-            player->SetRide(playerJson["ride"].get<std::string>());
-            player->SetScience(playerJson["science"].get<std::string>());
-            player->SetSleightOfHand(playerJson["sleightOfHand"].get<std::string>());
-            player->SetSpotHidden(playerJson["spotHidden"].get<std::string>());
-            player->SetStealth(playerJson["stealth"].get<std::string>());
-            player->SetSurvival(playerJson["survival"].get<std::string>());
-            player->SetSwim(playerJson["swim"].get<std::string>());
-            player->SetThrowing(playerJson["throwing"].get<std::string>());
-            player->SetTrack(playerJson["track"].get<std::string>());
+            try {
+            player->SetStrength(std::to_string(playerJson["strength"].get<int>()));
+            }catch (const std::exception& e) {
+                std::cerr << "Error setting strength: " << e.what() << std::endl;
+            }
+
+            player->SetConcentration(std::to_string(playerJson["concentration"].get<int>()));
+            player->SetDexterity(std::to_string(playerJson["dexterity"].get<int>()));
+            player->SetIntelligence(std::to_string(playerJson["intelligence"].get<int>()));
+            player->SetSize(std::to_string(playerJson["size"].get<int>()));
+            player->SetPower(std::to_string(playerJson["power"].get<int>()));
+            player->SetAppearance(std::to_string(playerJson["appearance"].get<int>()));
+            player->SetEducation(std::to_string(playerJson["education"].get<int>()));
+            player->SetHitPoints(std::to_string(playerJson["hitPoints"].get<int>()));
+            player->SetMagicPoints(std::to_string(playerJson["magicPoints"].get<int>()));
+            player->SetLuckPoints(std::to_string(playerJson["luckPoints"].get<int>()));
+            player->SetLuck(std::to_string(playerJson["luck"].get<int>()));
+            player->SetSanity(std::to_string(playerJson["sanity"].get<int>()));
+            player->SetAccounting(std::to_string(playerJson["accounting"].get<int>()));
+            player->SetAnthropology(std::to_string(playerJson["anthropology"].get<int>()));
+            player->SetApprise(std::to_string(playerJson["apprise"].get<int>()));
+            player->SetArcheology(std::to_string(playerJson["archaeology"].get<int>()));
+            player->SetArt(std::to_string(playerJson["art"].get<int>()));
+            player->SetCharm(std::to_string(playerJson["charm"].get<int>()));
+            player->SetClimb(std::to_string(playerJson["climb"].get<int>()));
+            player->SetCreditRating(std::to_string(playerJson["creditRating"].get<int>()));
+            player->SetCThulhuMythos(std::to_string(playerJson["cthulhuMythos"].get<int>()));
+            player->SetDisguise(std::to_string(playerJson["disguise"].get<int>()));
+            player->SetDodge(std::to_string(playerJson["dodge"].get<int>()));
+            player->SetDriveAuto(std::to_string(playerJson["driveAuto"].get<int>()));
+            player->SetElectricalRepair(std::to_string(playerJson["electricalRepair"].get<int>()));
+            player->SetFastTalk(std::to_string(playerJson["fastTalk"].get<int>()));
+            player->SetFighting(std::to_string(playerJson["fighting"].get<int>()));
+            player->SetFirearmsHandgun(std::to_string(playerJson["firearmsHandgun"].get<int>()));
+            player->SetFirearmsRifle(std::to_string(playerJson["firearmsRifle"].get<int>()));
+            player->SetFirstAid(std::to_string(playerJson["firstAid"].get<int>()));
+            player->SetHistory(std::to_string(playerJson["history"].get<int>()));
+            player->SetIntimidate(std::to_string(playerJson["intimidate"].get<int>()));
+            player->SetJump(std::to_string(playerJson["jump"].get<int>()));
+            player->SetLanguageOther(std::to_string(playerJson["languageOther"].get<int>()));
+            player->SetLanguageOwn(std::to_string(playerJson["languageOwn"].get<int>()));
+            player->SetLaw(std::to_string(playerJson["law"].get<int>()));
+            player->SetLibraryUse(std::to_string(playerJson["libraryUse"].get<int>()));
+            player->SetListen(std::to_string(playerJson["listen"].get<int>()));
+            player->SetLocksmith(std::to_string(playerJson["locksmith"].get<int>()));
+            player->SetMechanicalRepair(std::to_string(playerJson["mechanicalRepair"].get<int>()));
+            player->SetMedicine(std::to_string(playerJson["medicine"].get<int>()));
+            player->SetNaturalWorld(std::to_string(playerJson["naturalWorld"].get<int>()));
+            player->SetOccult(std::to_string(playerJson["occult"].get<int>()));
+            player->SetNavigate(std::to_string(playerJson["navigate"].get<int>()));
+            player->SetPersuade(std::to_string(playerJson["persuade"].get<int>()));
+            player->SetPilot(std::to_string(playerJson["pilot"].get<int>()));
+            player->SetPsychoanalysis(std::to_string(playerJson["psychoanalysis"].get<int>()));
+            player->SetPsychology(std::to_string(playerJson["psychology"].get<int>()));
+            player->SetRide(std::to_string(playerJson["ride"].get<int>()));
+            player->SetScience(std::to_string(playerJson["science"].get<int>()));
+            player->SetSleightOfHand(std::to_string(playerJson["sleightOfHand"].get<int>()));
+            player->SetSpotHidden(std::to_string(playerJson["spotHidden"].get<int>()));
+            player->SetStealth(std::to_string(playerJson["stealth"].get<int>()));
+            player->SetSurvival(std::to_string(playerJson["survival"].get<int>()));
+            player->SetSwim(std::to_string(playerJson["swim"].get<int>()));
+            player->SetThrowing(std::to_string(playerJson["throwing"].get<int>()));
+            player->SetTrack(std::to_string(playerJson["track"].get<int>()));
             players->push_back(player);
-            return players;
         }
     }
+            return players;
 }
 
 
