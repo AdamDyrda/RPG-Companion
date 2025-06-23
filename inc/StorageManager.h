@@ -10,9 +10,9 @@
 class StorageManager {
     public:
         StorageManager(std::string filePath);
-        ~StorageManager();
-        void SavePlayersToFile(nlohmann::json& j, const std::vector<Player*>& players);
-        std::vector<Player*>* LoadPlayers();
+        ~StorageManager()=default;
+        void SavePlayersToFile(nlohmann::json& j, const std::vector<Player*>& players) const;
+        std::vector<Player*>* LoadPlayers() const;
     private:
 
         std::vector<Player*> players;

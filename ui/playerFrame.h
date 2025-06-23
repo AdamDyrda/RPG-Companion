@@ -7,7 +7,7 @@
 
 
 
-class PlayerFrame : public wxFrame{
+class PlayerFrame final : public wxFrame{
 public:
 
     PlayerFrame(const wxString &windowTitle,Player* player,const wxFont &mainFont, const wxFont &headlineFont);

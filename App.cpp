@@ -8,8 +8,8 @@
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
-    std::string filePath = std::filesystem::current_path().string()+"./Players.json";
-    auto *sm =new StorageManager(filePath);
+    std::string const filePath = std::filesystem::current_path().string()+"./Players.json";
+    auto* const sm =new StorageManager(filePath);
     players = sm->LoadPlayers();
     auto *mainFrame = new MainFrame("RPG-Companion",players);
     mainFrame->Center();
@@ -18,11 +18,11 @@ bool App::OnInit() {
 }
 
 int App::OnExit() {
-    std::string filePath = std::filesystem::current_path().string()+"./Players.json";
-    auto *sm = new StorageManager(filePath);
+    std::string const filePath = std::filesystem::current_path().string()+"./Players.json";
+    auto * const sm = new StorageManager(filePath);
     nlohmann::json j;
     sm->SavePlayersToFile(j, *players);
-    //delete sm;
+    delete sm;
     wxApp::OnExit();
     return 0;
 }

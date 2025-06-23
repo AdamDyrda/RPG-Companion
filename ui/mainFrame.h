@@ -6,7 +6,7 @@
 #include "playerFrame.h"
 
 
-class MainFrame : public wxFrame {
+class MainFrame final : public wxFrame {
     public:
     MainFrame (const wxString& title,std::vector<Player*>*);
 
@@ -26,6 +26,7 @@ class MainFrame : public wxFrame {
 
         void OnAddPlayerButtonClicked(wxCommandEvent &event);
         void OnDialogAddPlayerButtonClicked(wxCommandEvent &event);
+        void OnDeletePlayerButtonClicked(wxCommandEvent &event);
         void OnInspectPlayerButtonClicked(wxCommandEvent &event);
         void OnGenerateNamesButtonClicked(wxCommandEvent & event);
         void OnQuit(wxCloseEvent &event);
@@ -39,6 +40,7 @@ class MainFrame : public wxFrame {
 
         void AddPlayer();
         void InspectPlayer();
+        void DeletePlayer();
 
 
 
@@ -51,6 +53,7 @@ class MainFrame : public wxFrame {
         wxStaticText* playersHeadlineText;
         wxStaticText* diceRollerHeadlineText;
         wxButton* addPlayerButton;
+        wxButton* deletePlayerButton;
         wxButton* inspectPlayerButton;
         wxDialog* addPlayerDialog;
         wxDialog* generatePlayerNamesDialog;

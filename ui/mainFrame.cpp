@@ -36,7 +36,7 @@ bool MainFrame::LoadCustomFont() {
 void MainFrame::CreateControls() {
   if (!LoadCustomFont()) {
       auto* statusBar = new wxStatusBar(this);
-        wxLogStatus("Failed to load custom font, using default font.");
+      statusBar->SetStatusText("Failed to load custom font, using default font.");
     }
     headlineFont = wxFont(wxFontInfo(wxSize(0,64)).Bold().FaceName("Almendra SC"));
     mainFont = wxFont(wxFontInfo(wxSize(0,24)).FaceName("Almendra SC"));
@@ -75,6 +75,9 @@ void MainFrame::CreateControls() {
     inspectPlayerButton->SetBackgroundColour(BUTTON_COLOR);
     addPlayerButton = new wxButton(playersPanel, wxID_ANY, "Add Player",wxDefaultPosition,wxDefaultSize);
     addPlayerButton->SetBackgroundColour(BUTTON_COLOR);
+
+    deletePlayerButton = new wxButton(playersPanel, wxID_ANY, "Delete Player",wxDefaultPosition,wxDefaultSize);
+    deletePlayerButton->SetBackgroundColour(BUTTON_COLOR);
 
    //DICEROLLER PANEL
     diceRollerPanel = new wxPanel(this);
@@ -262,10 +265,12 @@ void MainFrame::BindEventHandlers() {
 });
     //PlayerPanel events
     this->addPlayerButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnAddPlayerButtonClicked(event);});
+    this->deletePlayerButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnDeletePlayerButtonClicked(event);});
 
     //AddPlayerDialog events
     this->addPlayerDialog->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnDialogAddPlayerButtonClicked(event);}, wxID_OK);
     this->addPlayerDialog->Bind(wxEVT_CLOSE_WINDOW, [this](wxCloseEvent& event) {OnDialogClose(event);});
+
 
     //InspectPlayerButton events
     this->inspectPlayerButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnInspectPlayerButtonClicked(event);});
@@ -303,6 +308,7 @@ void MainFrame::SetupSizers() {
     playersPanelSizer->AddStretchSpacer(2);
     playersPanelSizer->Add(inspectPlayerButton, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 10);
     playersPanelSizer->Add(addPlayerButton, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 10);
+    playersPanelSizer->Add(deletePlayerButton, 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 10);
     playersPanelSizer->AddSpacer(10);
     playersPanel->SetSizer(playersPanelSizer);
     //dice roller part
@@ -355,32 +361,32 @@ void MainFrame::OnDialogClose(wxCloseEvent &event) {
 }
 
 void MainFrame::OnD4ButtonClicked(wxCommandEvent &event) {
-    D4result->SetLabel(dice::rollD4((1)));
+    D4result->SetLabel(dice::rollD4(1));
     event.Skip();
 }
 
 void MainFrame::OnD6ButtonClicked(wxCommandEvent &event) {
-    D6result->SetLabel(dice::rollD6((1)));
+    D6result->SetLabel(dice::rollD6(1));
     event.Skip();
 }
 
 void MainFrame::OnD10ButtonClicked(wxCommandEvent &event) {
-    D10result->SetLabel(dice::rollD10((1)));
+    D10result->SetLabel(dice::rollD10(1));
     event.Skip();
 }
 
 void MainFrame::OnD12ButtonClicked(wxCommandEvent &event) {
-    D12result->SetLabel(dice::rollD12((1)));
+    D12result->SetLabel(dice::rollD12(1));
     event.Skip();
 }
 
 void MainFrame::OnD20ButtonClicked(wxCommandEvent &event) {
-    D20result->SetLabel(dice::rollD20((1)));
+    D20result->SetLabel(dice::rollD20(1));
     event.Skip();
 }
 
 void MainFrame::OnD100ButtonClicked(wxCommandEvent &event) {
-    D100result->SetLabel(dice::rollD100((1)));
+    D100result->SetLabel(dice::rollD100(1));
     event.Skip();
 }
 
@@ -393,6 +399,15 @@ void MainFrame::OnAddPlayerButtonClicked(wxCommandEvent &event) {
 void MainFrame::OnDialogAddPlayerButtonClicked(wxCommandEvent &event) {
     AddPlayer();
     addPlayerDialog->Hide();
+}
+
+void MainFrame::OnDeletePlayerButtonClicked(wxCommandEvent &event) {
+    int answer = wxMessageBox("Delete Player", "Confirm",
+                          wxYES_NO, this);
+    if (answer == wxYES) {
+        DeletePlayer();
+    }
+    event.Skip();
 }
 
 
@@ -456,4 +471,12 @@ void MainFrame::InspectPlayer() {
         auto* playerFrame = new PlayerFrame(player->GetName(), player, mainFont, headlineFont);
         playerFrame->Show(true);
     };
+}
+
+void MainFrame::DeletePlayer() {
+    if (playersListBox->GetSelection()!=wxNOT_FOUND) {
+        int selection = playersListBox->GetSelection();
+        playersListBox->Delete(selection);
+        players->erase(players->begin() + selection);
+    }
 }

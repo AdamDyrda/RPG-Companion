@@ -5,7 +5,7 @@
 
 namespace dice{
 std::string rollD4(int numOfRolls){
-  srand(time(0));
+  srand(time(nullptr));
   std::string result = "";
   for(int i = 0; i < numOfRolls; i++){
     result += std::to_string(rand() % 4 + 1) + " ";

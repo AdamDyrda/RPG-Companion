@@ -1,4 +1,3 @@
-
 #include "../inc/StorageManager.h"
 
 #include <fstream>
@@ -7,7 +6,7 @@ StorageManager::StorageManager(std::string filePath) {
 this->filePath = std::move(filePath);
 }
 
-void StorageManager::SavePlayersToFile(nlohmann::json& j,const std::vector<Player *>& players) {
+void StorageManager::SavePlayersToFile(nlohmann::json& j,const std::vector<Player *>& players) const {
     j["players"] = nlohmann::json::array();
     for (const auto& player : players) {
         nlohmann::json playerJson;
@@ -89,7 +88,7 @@ void StorageManager::SavePlayersToFile(nlohmann::json& j,const std::vector<Playe
 
 }
 
-std::vector<Player *>* StorageManager::LoadPlayers() {
+std::vector<Player *>* StorageManager::LoadPlayers() const {
     auto* players = new std::vector<Player *>();
     nlohmann::json j;
     std::ifstream
