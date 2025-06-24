@@ -218,11 +218,13 @@ void Player::SetPronoun(const wxString& pronoun) {
 }
 void Player::SetAge(const wxString& age) {
     if (age.IsNumber()) {
-        this->age = std::stoi(age.ToStdString());
+        if (std::stoi(age.ToStdString())>0) {
+            this->age = std::stoi(age.ToStdString());
+            return;
+        }
     }
-    else {
-        wxLogError("Age must be a number.");
-    }
+        wxLogError("Age must be a positive number.");
+
 }
 void Player::SetStrength(const wxString& strength) {
     if (strength.IsNumber()) {

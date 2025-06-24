@@ -10,6 +10,7 @@
 #include <utility>
 #include <vector>
 #include <wx/string.h>
+#include <wx/log.h>
 
 
 #include "../inc/Weapon.h"
@@ -101,6 +102,10 @@ public:
     this->birthplace = std::move(birthplace);
     this->residence = std::move(residence);
     this->pronoun = std::move(pronoun);
+    if (age <= 0|| age > INT_MAX) {
+        wxLogError("Age must be a positive number and less than max int value. Setting age to 0.");
+      age = 0;
+    }
     this->age = age;
     this->stats = Stats();
     this->skills = Skills();
