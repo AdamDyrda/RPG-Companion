@@ -1,3 +1,8 @@
+/**
+ *@file mainFrame.cpp
+ *@brief Implementation of the MainFrame class, which provides the main GUI for the RPG Companion application.
+ **/
+
 #include "mainFrame.h"
 #include <wx/wx.h>
 #include <wx/filename.h>

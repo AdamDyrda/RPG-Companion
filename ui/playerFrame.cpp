@@ -1,6 +1,7 @@
-//
-// Created by adame on 6/10/2025.
-//
+/**
+    @file playerFrame.cpp
+    @brief Implementation of the PlayerFrame class, which provides a GUI for displaying and editing player information.
+**/
 
 #include "playerFrame.h"
 #include <wx/display.h>

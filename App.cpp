@@ -1,3 +1,7 @@
+/**
+ *@file App.cpp
+ *@brief Implementation of the App class, which initializes the application and manages player data storage.
+ **/
 #include "ui/mainFrame.h"
 #include "App.h"
 #include "inc/StorageManager.h"

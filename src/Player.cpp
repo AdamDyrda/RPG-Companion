@@ -1,3 +1,9 @@
+/**
+*@file Player.cpp
+*@brief implementation of the Player class.
+**/
+
+
 #include "../inc/Player.h"
 #include <string>
 #include <wx/wx.h>

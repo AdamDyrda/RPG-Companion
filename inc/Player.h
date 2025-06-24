@@ -1,6 +1,11 @@
-//
-// Created by adame on 3/16/2025.
-//
+/**
+ * @file Player.h
+ * @brief Header file for the Player class.
+ *
+ * This file defines the Player class, which represents a player character in the game.
+ * It includes attributes such as name, occupation, birthplace, residence, pronoun, age,
+ * stats, skills, and weapons.
+ */
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -13,9 +18,10 @@
 #include <wx/log.h>
 
 
-#include "../inc/Weapon.h"
-
-
+/**
+ * @struct Stats
+ * @brief struct representing the player's statistics.
+ */
 struct Stats{
   int strength;
   int concentration;
@@ -32,6 +38,10 @@ struct Stats{
   int Sanity;
 };
 
+/**
+ * @struct Skills
+ * @brief struct representing the player's skills.
+ */
 struct Skills{
   int accounting;
   int anthropology;
@@ -81,7 +91,13 @@ struct Skills{
 
 };
 
-
+/**
+ * @class Player
+ * @brief Class representing a player character in the game.
+ *
+ * The Player class contains attributes such as name, occupation, birthplace, residence,
+ * pronoun, age, stats, skills, and methods to get and set these attributes.
+ */
 class Player {
 private:
 std::string name;
@@ -92,10 +108,18 @@ std::string pronoun;
 int age;
 Stats stats;
 Skills skills;
-std::vector<Weapon>weapons;
 
 
 public:
+  /**
+   * @brief Constructor for the Player class. Sets the player's attributes to default values.
+   * @param name The name of the player.
+   * @param occupation The occupation of the player.
+   * @param birthplace The birthplace of the player.
+   * @param residence The residence of the player.
+   * @param pronoun The pronoun used by the player.
+   * @param age The age of the player, must be a positive number and less than max int value.
+   */
   Player(std::string name, std::string occupation, std::string birthplace, std::string residence, std::string pronoun, int age) {
     this->name = std::move(name);
     this->occupation = std::move(occupation);
@@ -171,6 +195,9 @@ public:
     skills.track = 10;
     std::cout<<"Player created"<<std::endl;
   }
+  /**
+   * @brief Destructor for the Player class.
+   */
   ~Player(){
     std::cout<<"Player destroyed"<<std::endl;
   }

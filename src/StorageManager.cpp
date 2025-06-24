@@ -1,3 +1,7 @@
+/**
+ *@file StorageManager.cpp
+ *@brief StorageManager class implementation, responsible for saving and loading player data to and from a JSON file.
+ **/
 #include "../inc/StorageManager.h"
 
 #include <fstream>

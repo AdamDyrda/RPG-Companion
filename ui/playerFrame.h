@@ -1,3 +1,7 @@
+/**
+ *@file playerFrame.h
+ *@brief header file for the PlayerFrame class, which provides a GUI for displaying and editing player information.
+ **/
 
 #ifndef PLAYERFRAME_H
 #define PLAYERFRAME_H
@@ -6,22 +10,51 @@
 #include "../inc/player.h"
 
 
-
+/**
+ * @class PlayerFrame
+ * @brief An interactive frame for displaying and editing player information.
+ */
 class PlayerFrame final : public wxFrame{
 public:
-
+    /**
+     * @brief Constructor for the PlayerFrame class.
+    * @param windowTitle The title of the window.
+    * @param player A pointer to the Player object containing player data.
+    * @param mainFont reference of an wxFont object that defines the main font used for the controls.
+    * @param headlineFont reference of an wxFont object that defines the font used for headlines in the frame.
+     */
     PlayerFrame(const wxString &windowTitle,Player* player,const wxFont &mainFont, const wxFont &headlineFont);
     private:
     Player* player;
     wxFont mainFont;
         wxFont headlineFont;
+
+    /**
+     * @brief initializes the frame controls
+     */
     void CreateControls();
+    /**
+     * @brief Loads player data into the controls.
+     */
     void LoadPlayerData();
+    /**
+     * @brief Updates the player object with data from the controls.
+     */
     void UpdatePlayer();
 
-    void OnClose(wxCloseEvent &event);
+    /**
+     *@brief Event handler for the delete player button click event.
+     *@param event The wxCommandEvent object containing event data.
+     */
+     void OnClose(wxCloseEvent &event);
 
+    /**
+     * @brief Binds event handlers to the controls.
+     */
     void BindEventHandlers();
+    /**
+     * @brief Sets up the sizers for layout management.
+     */
     void SetupSizers();
 
     wxScrolledWindow* mainWindow;

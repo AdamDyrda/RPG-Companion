@@ -1,6 +1,7 @@
-//
-// Created by adame on 3/27/2025.
-//
+/**
+ *@file dice.cpp
+ *@brief implementation of the dice rolling functions.
+**/
 #include "../inc/dice.h"
 
 namespace dice{

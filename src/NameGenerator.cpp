@@ -1,3 +1,8 @@
+/**
+ *@file NameGenerator.cpp
+ *@brief implementation of the NameGenerator class, which generates names for players.
+ */
+
 #include "../inc/NameGenerator.h"
 
 #include <vector>
